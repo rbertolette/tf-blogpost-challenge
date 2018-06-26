@@ -1,16 +1,30 @@
 {
-  "name": "tf_blogpost_challenge",
+  "name": "tf-blogpost-challenge",
   "version": "1.0.0",
-  "description": "Thinkful Blog API Challenge",
+  "description": "Thinkful Blog Challenge try ",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rbertolette/tf-blogpost-challenge.git"
+  },
+  "keywords": [
+    "thinkful",
+    "node",
+    "challenge"
+  ],
   "author": "Reed Bertolette",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rbertolette/tf-blogpost-challenge/issues"
+  },
+  "homepage": "https://github.com/rbertolette/tf-blogpost-challenge#readme",
   "dependencies": {
     "express": "^4.16.3",
-    "nodemon": "^1.17.5"
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.5",
+    "uuid": "^3.2.1"
   }
 }
