@@ -22,9 +22,32 @@ router.get('/', (req, res) => {
 });
 
 
-// when new blog post is added, ensure has required fields. if not,
-// log error and return 400 status code with hepful message.
-// if okay, add new item, and return it with a status 201.
+// // when new blog post is added, ensure has required fields. if not,
+// // log error and return 400 status code with hepful message.
+// // if okay, add new item, and return it with a status 201.
+// router.post('/', (req, res) => {
+//   // ensure `name` and `budget` are in request body
+//   const requiredFields = ['title', 'content', 'author'];
+//   for (let i=0; i<requiredFields.length; i++) {
+//     const field = requiredFields[i];
+//     if (!(field in req.body)) {
+//       const message = `Missing \`${field}\` in request body`;
+//       console.error(message);
+//       return res.status(400).send(message);
+//     }
+//   }
+//   // SOLUTION didn't have date
+//   // const item = BlogPosts.create(req.body.title, req.body.content, req.body.author, req.body.publishDate);
+//   const item = BlogPosts.create(req.body.title, req.body.content, req.body.author);
+//   res.status(201).json(item);
+// });
+
+// add endpoint for POST requests, which should cause a new
+// blog post to be added (using `BlogPosts.create()`). It should
+// return a JSON object representing the new post (including
+// the id, which `BlogPosts` will create. This endpoint should
+// send a 400 error if the post doesn't contain
+// `title`, `content`, and `author`
 router.post('/', (req, res) => {
   // ensure `name` and `budget` are in request body
   const requiredFields = ['title', 'content', 'author'];
@@ -36,16 +59,21 @@ router.post('/', (req, res) => {
       return res.status(400).send(message);
     }
   }
-  // SOLUTION didn't have date
-  // const item = BlogPosts.create(req.body.title, req.body.content, req.body.author, req.body.publishDate);
-  const item = BlogPosts.create(req.body.title, req.body.content, req.body.author);
+  let item;
+  if (req.body.publishDate){
+    item = BlogPosts.create(
+      req.body.title, req.body.content, req.body.author, req.body.publishDate);
+  } else {
+    item = BlogPosts.create(
+      req.body.title, req.body.content, req.body.author);
+  }
   res.status(201).json(item);
 });
 
 // Delete blog posts (by id)!
 router.delete('/:id', (req, res) => {
   BlogPosts.delete(req.params.id);
-  console.log(`Deleted blog post item \`${req.params.ID}\``);
+  console.log(`Deleted blog post item \`${req.params.id}\``);
   res.status(204).end();
 });
 
@@ -72,12 +100,12 @@ router.put('/:id', (req, res) => {
   if (req.params.id !== req.body.id) {
     const message = (
       `Request path id (${req.params.id}) and request body id `
-        `(${req.body.id}) must match`);
+      `(${req.body.id}) must match`);
     console.error(message);
     return res.status(400).send(message);
   }
-  console.log(`Updating blog post item \`${req.params.id}\``);
-  const updatedItem = BlogPosts.update({
+  console.log(`Updating blog post with id \`${req.params.id}\``);
+  BlogPosts.update({
     id: req.params.id,
     title: req.body.title,
     content: req.body.content,
