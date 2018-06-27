@@ -62,7 +62,7 @@ describe("BlogPosts", function() {
   it("should add a blogpost on POST", function() {
 
     const myPubDate = Date.now();
-    const newPost = { title: "my title", content: "my content", author: "chai-test", publishDate: myPubDate};
+    const newPost = { title: "my title", content: "my content", author: "chai-test" }; //, publishDate: myPubDate};
     // console.log(newPost);
     return chai
       .request(app)
@@ -78,7 +78,7 @@ describe("BlogPosts", function() {
         // response should be deep equal to `newPost` from above if we assign
         // `id` to it from `res.body.id`
         expect(res.body).to.deep.equal(
-          Object.assign(newPost, { id: res.body.id })
+          Object.assign(newPost, { id: res.body.id, publishDate: res.body.publishDate })
         );
       });
   });
