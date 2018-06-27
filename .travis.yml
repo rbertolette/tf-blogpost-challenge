@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: g26iUBSM7R9N7DYP0BJJP9+aAYlZPvK/dZ53WW2trhFAD4aE1XV9/jF2ZlrsPmktpHzpqHfwpMY8zx2bcZ84qP8jHlOrmrr6tKNN9kxbMupESfmasRukQ84j82pwWXfvQCbcnduPnk4zATvWB74z3yrgnmNG/kbCF9JU/SwCwTtBRF00j3YGrQgQff5jlAnJCXdnCTzC8vwwD28u/JqYvJOBA/y/IgV/A7mns4pT1yjydJgEjgmFPTVdvPSd2feG2jYJdwDfmAVmnx/U+7CjSOpYZJ/pURblZTEnSuGhQg6fQBeSbExMfaGTm67UHvKUlLVDZx1I0+1mE7v/Id37t5xZs5y7ku9g48bcJbWWUHWKfwdLAJlNPqtab+kBSrD0zB7EMYux42vWdC0Mfq8eCcmJDCD4BSxc8Ko40l+kYnQvtSphq8Y9h36O4aHEOxGBtplLg86C+uTwqcVUfmNjA7kguDhNKt4pUbp/nuh+mg8iYOuVTGMQmB29o2mQ1Ef2extscI3LqhqO8M5NWEf5OPuzsD+FzWUZkjmJ7w9dchHLhbCXnh1H7xHBHY7JNwpACU+y30JOMAp8wv5db9IGSNA7G2t/MxvaCiiuZclR2RoMhn8gnI7oYDW6CcXBr7uR5NBbM3EzCWN+LtvJc5pY892KKZu+DJyBAURM1DrAk9U=
+  app: hidden-journey-51582
+  on:
+    repo: rbertolette/tf-blogpost-challenge
